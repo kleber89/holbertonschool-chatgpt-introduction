@@ -2,30 +2,30 @@
 import sys
 
 def factorial(n):
-    # Si el número es 0 o 1, el factorial es 1
-    if n == 0 or n == 1:
+    """Calculate the factorial of a non-negative integer n."""
+    if n == 0:
         return 1
-    
-    # Inicializar el resultado como 1
     result = 1
-    
-    # Calcular el factorial usando un bucle while
     while n > 1:
         result *= n
-        n -= 1  # Reducir n en cada iteración
-    
+        n -= 1
     return result
 
-# Verificar si se proporciona un argumento
-if len(sys.argv) != 2:
-    print("Uso: python script.py <numero>")
-    sys.exit(1)
+if __name__ == "__main__":
+    # Check if the correct number of arguments is provided
+    if len(sys.argv) != 2:
+        print("Usage: ./factorial.py <non-negative integer>")
+        sys.exit(1)
 
-# Convertir el argumento a entero y calcular el factorial
-try:
-    num = int(sys.argv[1])
-    result = factorial(num)
-    print("El factorial de", num, "es:", result)
-except ValueError:
-    print("Por favor, proporcione un número entero válido como argumento.")
-    sys.exit(1)
+    try:
+        # Convert the argument to an integer
+        n = int(sys.argv[1])
+        if n < 0:
+            raise ValueError("The argument must be a non-negative integer")
+    except ValueError as e:
+        print(e)
+        sys.exit(1)
+
+    # Calculate and print the factorial
+    f = factorial(n)
+    print(f)
