@@ -6,19 +6,19 @@ class Checkbook:
         try:
             amount = float(amount)
             if amount <= 0:
-                print("Please enter a positive amount for deposit.")
+                print("Invalid deposit amount. Please enter a positive number.")
             else:
                 self.balance += amount
                 print("Deposited ${:.2f}".format(amount))
                 print("Current Balance: ${:.2f}".format(self.balance))
         except ValueError:
-            print("Invalid input. Please enter a valid numeric value.")
+            print("Invalid input. Please enter a numeric value for the deposit amount.")
 
     def withdraw(self, amount):
         try:
             amount = float(amount)
             if amount <= 0:
-                print("Please enter a positive amount for withdrawal.")
+                print("Invalid withdrawal amount. Please enter a positive number.")
             elif amount > self.balance:
                 print("Insufficient funds to complete the withdrawal.")
             else:
@@ -26,7 +26,7 @@ class Checkbook:
                 print("Withdrew ${:.2f}".format(amount))
                 print("Current Balance: ${:.2f}".format(self.balance))
         except ValueError:
-            print("Invalid input. Please enter a valid numeric value.")
+            print("Invalid input. Please enter a numeric value for the withdrawal amount.")
 
     def get_balance(self):
         print("Current Balance: ${:.2f}".format(self.balance))
